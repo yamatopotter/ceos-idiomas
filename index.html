@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CÉOS - Escola de Idiomas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="font-sans text-gray-800">
+    <!-- Top Bar -->
+    <div
+      class="bg-yellow-500 text-white py-2 px-4 flex justify-end gap-4 items-center text-sm"
+    >
+      <span>(21) 96409-1584</span>
+
+      <div class="flex gap-2 text-lg">
+        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+
+      <a href="#" class="font-bold border border-white px-2 py-1 rounded-full"
+        >SECRETARIA ON-LINE</a
+      >
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center gap-10"
+      >
+        <div class="text-2xl font-bold text-blue-900 uppercase">CÉOS</div>
+        <!-- Desktop/Tablet Menu -->
+        <div
+          class="hidden md:flex md:flex-1 md:justify-between md:items-center space-x-4 lg:space-x-6 text-xs lg:text-sm font-semibold"
+        >
+          <a href="#about" class="hover:text-blue-600">SOBRE NÓS</a>
+          <a href="#cursos" class="hover:text-blue-600">CURSOS</a>
+          <a href="#faq" class="hover:text-blue-600">FAQ</a>
+          <a href="#blog" class="hover:text-blue-600">BLOG</a>
+          <a
+            href="#"
+            class="bg-[#A5C3DC] text-white px-4 py-2 rounded-full shadow-md hover:bg-[#7FA9C9] hover:shadow-lg transition font-bold"
+            >ESTUDE CONOSCO</a
+          >
+        </div>
+        <!-- Mobile Toggle -->
+        <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[500px] flex items-center bg-gray-100">
+      <img
+        src="https://placehold.co/1920x600/003366/FFF?text=Hero+Image"
+        class="absolute inset-0 w-full h-full object-cover opacity-80"
+        alt="Banner"
+      />
+      <div class="container mx-auto px-4 relative text-white">
+        <h1 class="text-3xl md:text-5xl font-bold max-w-lg leading-tight">
+          Praticidade para aprender, confiança para dominar o mundo!
+        </h1>
+      </div>
+    </header>
+
+    <!-- About Us -->
+    <section
+      id="about"
+      class="py-16 container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center"
+    >
+      <div>
+        <h2 class="flex items-start">
+          <span class="title-one">About</span>
+          <span class="title-two">us</span>
+        </h2>
+
+        <p class="mb-4 leading-relaxed">
+          O Céos Escola de Idiomas nasceu com o propósito de
+          <b>transformar a maneira como as pessoas aprendem um novo idioma.</b>
+        </p>
+
+        <p class="mb-4 leading-relaxed">
+          Mais do que ensinar, oferecemos uma
+          <strong>experiência personalizada</strong> e imersiva, com foco na
+          comunicação prática e no engajamento interativo, nosso objetivo é
+          <strong>empoderar os alunos</strong> através de metodologias que
+          priorizam suas necessidades individuais.
+        </p>
+
+        <p class="mb-4 leading-relaxed">
+          Inspirado na ideia de grandeza, força intelectual e busca constante
+          por aprendizado, o nome <strong>CÉOS</strong>, inspirado no
+          <strong>titã Coeus</strong>, representa uma figura ligada ao
+          conhecimento, à inteligência e à busca pela verdae. Ou seja, pessoas
+          que desejam <strong>ir além</strong>,
+          <strong>ampliar horizontes</strong> e
+          <strong> conquistar novos espaços </strong> através do
+          <strong>conhecimento</strong>.
+        </p>
+      </div>
+      <div>
+        <img
+          src="https://placehold.co/600x400/blue/white?text=Céos+Experience"
+          class="rounded-lg shadow-xl"
+          alt="Sobre nós"
+        />
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="cursos" class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-8">Nossos Cursos</h2>
+        <!-- Grid: 1 col (mobile), 2 cols (tablet), 4 cols (desktop) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Course Card (Repeatable) -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-4xl mb-4">🇬🇧</div>
+            <h3 class="font-bold text-xl mb-4">Inglês</h3>
+            <a href="#" class="text-blue-600 font-semibold">Saiba mais →</a>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-4xl mb-4">🇪🇸</div>
+            <h3 class="font-bold text-xl mb-4">Espanhol</h3>
+            <a href="#" class="text-blue-600 font-semibold">Saiba mais →</a>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-4xl mb-4">🇫🇷</div>
+            <h3 class="font-bold text-xl mb-4">Francês</h3>
+            <a href="#" class="text-blue-600 font-semibold">Saiba mais →</a>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-4xl mb-4">🇯🇵</div>
+            <h3 class="font-bold text-xl mb-4">Japonês</h3>
+            <a href="#" class="text-blue-600 font-semibold">Saiba mais →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="py-16 container mx-auto px-4">
+      <h2
+        class="text-2xl font-bold text-center mb-12 uppercase tracking-widest"
+      >
+        Nossos Diferenciais
+      </h2>
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center text-xs font-bold uppercase"
+      >
+        <div>
+          <i class="fas fa-globe text-3xl mb-2 text-blue-800"></i>
+          <p>+ de 10 Idiomas</p>
+        </div>
+        <div>
+          <i class="fas fa-certificate text-3xl mb-2 text-blue-800"></i>
+          <p>Certificado Cambridge</p>
+        </div>
+        <div>
+          <i class="fas fa-user-graduate text-3xl mb-2 text-blue-800"></i>
+          <p>Metodologia Comprovada</p>
+        </div>
+        <div>
+          <i class="fas fa-briefcase text-3xl mb-2 text-blue-800"></i>
+          <p>Céos Business</p>
+        </div>
+        <div>
+          <i class="fas fa-universal-access text-3xl mb-2 text-blue-800"></i>
+          <p>Educação Inclusiva</p>
+        </div>
+        <div>
+          <i class="fas fa-award text-3xl mb-2 text-blue-800"></i>
+          <p>Prêmio LocalBest</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-blue-900 text-white py-16">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 text-center">FAQ</h2>
+        <div class="space-y-4">
+          <div
+            class="border-b border-blue-700 py-4 flex justify-between items-center cursor-pointer"
+          >
+            <span>O curso oferece certificado?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div
+            class="border-b border-blue-700 py-4 flex justify-between items-center cursor-pointer"
+          >
+            <span>As aulas são presenciais ou on-line?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-12">
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12"
+      >
+        <div>
+          <h3 class="font-bold text-xl mb-4">CÉOS</h3>
+          <p class="text-sm">Escola de Idiomas em Itaguaí.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 italic">Conheça nossa unidade</h4>
+          <p class="text-sm">
+            R. Dr. Curvelo Cavalcanti, 234 - Sobreloja<br />Centro, Itaguaí - RJ
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 italic">Contato</h4>
+          <p class="text-sm">(21) 96560-9709</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
