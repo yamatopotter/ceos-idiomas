@@ -1,7 +1,18 @@
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
+const navClose = document.getElementById('navClose');
+
+const closeMenu = () => navLinks?.classList.remove('open');
+const openMenu  = () => navLinks?.classList.add('open');
+
 navToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
+navClose?.addEventListener('click', closeMenu);
+
+// Fecha ao clicar em qualquer link
+navLinks?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
 
 // FAQ accordion
 document.querySelectorAll('.faq-item').forEach(item => {

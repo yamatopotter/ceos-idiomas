@@ -1,371 +1,506 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CÉOS - Escola de Idiomas</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <span>(21) 96409-1584</span>
-    <div class="social-icons">
-      <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-    <a href="#" class="btn-secretaria">SECRETARIA ON-LINE</a>
-  </div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <a class="navbar-logo" href="#">
-        <img src="assets/img/logo.png" alt="CÉOS Escola de Idiomas" />
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#sobre">SOBRE NÓS</a></li>
-        <li><a href="#cursos">CURSOS</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contato" class="btn-estude">ESTUDE CONOSCO</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <img class="hero-bg" src="assets/img/banner.png" alt="Praticidade para aprender, confiança dominar o mundo!" />
-    <div class="hero-dots-container">
-      <div class="hero-dots">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CÉOS - Escola de Idiomas</title>
+    <meta name="description" content="CÉOS Escola de Idiomas — Inglês, Espanhol, Francês e mais de 10 idiomas. Metodologia aprovada, certificado Cambridge e aulas presenciais ou on-line em Itaguaí, RJ." />
+    <link rel="preload" as="image" href="assets/img/banner.webp" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome carregado de forma não-bloqueante -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+  </head>
+  <body>
+    <!-- SITE HEADER (sticky wrapper) -->
+    <header class="site-header">
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <span>(21) 96409-1584</span>
+      <div class="top-bar-right">
+        <div class="social-icons">
+          <a href="#" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </div>
+        <a href="#" class="btn-secretaria">SECRETARIA ON-LINE</a>
       </div>
     </div>
-  </header>
 
-  <!-- ABOUT -->
-  <section id="sobre" class="about-section">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <a class="navbar-logo" href="#">
+          <img src="assets/img/logo.webp" alt="CÉOS Escola de Idiomas" width="800" height="285" fetchpriority="high" />
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li class="nav-close-item">
+            <button class="nav-close" id="navClose" aria-label="Fechar menu">
+              <i class="fas fa-times"></i>
+            </button>
+          </li>
+          <li><a href="#sobre">SOBRE NÓS</a></li>
+          <li><a href="#cursos">CURSOS</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li class="nav-cta-item"><a href="#contato" class="btn-estude">ESTUDE CONOSCO</a></li>
+        </ul>
+      </div>
+    </nav>
+    </header>
+
+    <!-- HERO -->
+    <header class="hero">
+      <img
+        class="hero-bg"
+        src="assets/img/banner.webp"
+        alt="Praticidade para aprender, confiança dominar o mundo!"
+        width="1920" height="960"
+        fetchpriority="high"
+      />
+      <div class="hero-dots-container">
+        <div class="hero-dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="sobre" class="about-section">
       <div class="about-text">
         <h2 class="about-title">
           <span class="black">About</span><span class="yellow">us</span>
         </h2>
         <p>
           O Céos Escola de Idiomas nasceu com o propósito de
-          <strong>transformar a maneira como as pessoas aprendem um novo idioma.</strong>
+          <strong
+            >transformar a maneira como as pessoas aprendem um novo
+            idioma.</strong
+          >
         </p>
         <p>
-          Mais do que ensinar, oferecemos uma <strong>experiência personalizada</strong>
-          e imersiva, com foco na comunicação prática e no engajamento interativo,
-          nosso objetivo é <strong>empoderar os alunos</strong> através de metodologias
-          que priorizam suas necessidades individuais.
+          Mais do que ensinar, oferecemos uma
+          <strong>experiência personalizada</strong> e imersiva, com foco na
+          comunicação prática e no engajamento interativo, nosso objetivo é
+          <strong>empoderar os alunos</strong> através de metodologias que
+          priorizam suas necessidades individuais.
         </p>
         <p>
-          Inspirado na ideia de grandeza, força intelectual e busca constante por
-          aprendizado, o nome <strong>CÉOS</strong>, inspirado no <strong>titã Coeus</strong>,
-          representa uma figura ligada ao conhecimento, à inteligência e à busca pela
-          verdade. Ou seja, pessoas que desejam <strong>ir além</strong>,
+          Inspirado na ideia de grandeza, força intelectual e busca constante
+          por aprendizado, o nome <strong>CÉOS</strong>, inspirado no
+          <strong>titã Coeus</strong>, representa uma figura ligada ao
+          conhecimento, à inteligência e à busca pela verdade. Ou seja, pessoas
+          que desejam <strong>ir além</strong>,
           <strong>ampliar horizontes</strong> e
-          <strong>conquistar novos espaços</strong> através do <strong>conhecimento</strong>.
+          <strong>conquistar novos espaços</strong> através do
+          <strong>conhecimento</strong>.
         </p>
       </div>
       <div class="about-image">
-        <img src="assets/img/sobre.png" alt="CÉOS Escola de Idiomas" />
+        <img src="assets/img/sobre.webp" alt="CÉOS Escola de Idiomas" width="900" height="1141" loading="lazy" />
       </div>
-  </section>
+    </section>
 
-  <!-- COURSES -->
-  <section id="cursos" class="courses-section">
-    <h2 class="section-title">Nossos <span>cursos</span></h2>
-    <div class="courses-grid">
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/1.png" alt="Inglês" />
-        <h3>Inglês</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/2.png" alt="Espanhol" />
-        <h3>Espanhol</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/3.png" alt="Francês" />
-        <h3>Francês</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/4.png" alt="Alemão" />
-        <h3>Alemão</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/5.png" alt="Italiano" />
-        <h3>Italiano</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/6.png" alt="Chinês" />
-        <h3>Chinês</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/7.png" alt="Coreano" />
-        <h3>Coreano</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/8.png" alt="Japonês" />
-        <h3>Japonês</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/9.png" alt="Árabe" />
-        <h3>Árabe</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-      <div class="course-card">
-        <img src="assets/img/idiomas/10.png" alt="Libras" />
-        <h3>Libras</h3>
-        <a href="#" class="btn-saiba">Saiba mais</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DIFERENCIAIS -->
-  <section class="diferenciais-section">
-    <h2 class="section-title">Nossos <span>diferenciais</span></h2>
-    <div class="diferenciais-grid">
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/1-titulos.webp" alt="2 Títulos" />
-        <p class="dif-label">2 títulos</p>
-        <p class="dif-sub">CAMPEÃ PRÊMIO LOCALBEST</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/2-idiomas.webp" alt="+ de 10 Idiomas" />
-        <p class="dif-label">+ de 10</p>
-        <p class="dif-sub">IDIOMAS</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/3-metodologia.webp" alt="5 Anos de Metodologia" />
-        <p class="dif-label">5 anos</p>
-        <p class="dif-sub">METODOLOGIA APROVADA E COMPROVADA</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/4-cambridge.webp" alt="Certificado Cambridge" />
-        <p class="dif-label">Certificado</p>
-        <p class="dif-sub">CAMBRIDGE ENGLISH</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/5-business.webp" alt="CÉOS Business" />
-        <p class="dif-label">CÉOS</p>
-        <p class="dif-sub">BUSINESS</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/6-colaboradores.webp" alt="Prepare seus Colaboradores" />
-        <p class="dif-sub">PREPARE SEUS COLABORADORES PARA UM MUNDO CADA VEZ MAIS GLOBALIZADO</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/7-dive-in.webp" alt="CÉOS Dive In" />
-        <p class="dif-sub">CÉOS DIVE IN</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/8-educacao-inclusiva.webp" alt="Educação Inclusiva" />
-        <p class="dif-sub">EDUCAÇÃO INCLUSIVA</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/9-floating-class.webp" alt="Floating Class" />
-        <p class="dif-sub">FLOATING CLASS</p>
-      </div>
-
-      <div class="dif-card">
-        <img src="assets/img/diferenciais/10-avaliacao.webp" alt="Avaliação Contínua" />
-        <p class="dif-sub">AVALIAÇÃO CONTÍNUA</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="faq-section">
-    <h2 class="faq-title">FAQ</h2>
-    <div class="faq-grid">
-
-      <!-- Coluna esquerda -->
-      <div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>O curso oferece certificado?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Sim! Ao concluir o curso, o aluno recebe um certificado de conclusão reconhecido pelo mercado.
-          </div>
+    <!-- COURSES -->
+    <section id="cursos" class="courses-section">
+      <h2 class="section-title">Nossos <span>cursos</span></h2>
+      <div class="courses-grid">
+        <div class="course-card">
+          <img src="assets/img/idiomas/1.webp" width="200" height="200" loading="lazy" alt="Inglês" />
+          <h3>Inglês</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>As aulas são presenciais ou on-line?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Oferecemos ambas as modalidades. O aluno pode escolher o formato que melhor se adapta à sua rotina.
-          </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/2.webp" width="200" height="200" loading="lazy" alt="Espanhol" />
+          <h3>Espanhol</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Aulas remotas são gravadas?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Sim, as aulas remotas são gravadas e ficam disponíveis por um período para revisão.
-          </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/3.webp" width="200" height="200" loading="lazy" alt="Francês" />
+          <h3>Francês</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Qual tempo de duração do curso?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            A duração varia de acordo com o idioma e o nível do aluno. Em média, os cursos têm duração de 1 a 3 anos.
-          </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/4.webp" width="200" height="200" loading="lazy" alt="Alemão" />
+          <h3>Alemão</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Há descontos para empresas, familiares ou grupos?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Sim! Temos planos especiais para grupos, empresas e famílias. Entre em contato para saber mais.
-          </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/5.webp" width="200" height="200" loading="lazy" alt="Italiano" />
+          <h3>Italiano</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
+        </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/6.webp" width="200" height="200" loading="lazy" alt="Chinês" />
+          <h3>Chinês</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
+        </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/7.webp" width="200" height="200" loading="lazy" alt="Coreano" />
+          <h3>Coreano</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
+        </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/8.webp" width="200" height="200" loading="lazy" alt="Japonês" />
+          <h3>Japonês</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
+        </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/9.webp" width="200" height="200" loading="lazy" alt="Árabe" />
+          <h3>Árabe</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
+        </div>
+
+        <div class="course-card">
+          <img src="assets/img/idiomas/10.webp" width="200" height="200" loading="lazy" alt="Libras" />
+          <h3>Libras</h3>
+          <a href="#" class="btn-saiba">Saiba mais</a>
         </div>
       </div>
+      <div class="courses-cta">
+        <a href="#contato" class="btn-estude">ESTUDE CONOSCO</a>
+      </div>
+    </section>
 
-      <!-- Coluna direita -->
-      <div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Quem pode estudar no CÉOS?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Qualquer pessoa a partir dos 5 anos de idade pode estudar no CÉOS. Temos turmas para todas as idades.
-          </div>
+    <!-- DIFERENCIAIS -->
+    <section class="diferenciais-section">
+      <h2 class="section-title">Nossos <span>diferenciais</span></h2>
+      <div class="diferenciais-grid">
+        <div class="dif-card">
+          <img src="assets/img/diferenciais/1-titulos.webp" alt="2 Títulos" width="110" height="110" loading="lazy" />
+          <p class="dif-label">2 títulos</p>
+          <p class="dif-sub">CAMPEÃ PRÊMIO LOCALBEST</p>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Preciso ter conhecimento prévio?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Não! Temos turmas do nível básico ao avançado. Realizamos uma avaliação de nivelamento gratuitamente.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Posso fazer aula experimental?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Sim! Oferecemos uma aula experimental gratuita para que você conheça nossa metodologia.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Quais são as formas de pagamento?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Aceitamos cartão de crédito, débito, boleto bancário e PIX. Também temos opções de parcelamento.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Qual é a metodologia de ensino da CÉOS?</span>
-            <span class="faq-icon"><i class="fas fa-plus"></i></span>
-          </div>
-          <div class="faq-answer">
-            Nossa metodologia é comunicativa e imersiva, focada na conversação prática desde a primeira aula.
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
-    <h2 class="section-title">O que falam do <span>CÉOS</span>?</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <div class="name">Carlo Dias</div>
-        <p>Excelente escola! Os professores são muito dedicados e a metodologia é incrível. Aprendi muito mais rápido do que esperava.</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <div class="name">Carlo Dias</div>
-        <p>A melhor escola de idiomas da região! Ambiente acolhedor, professores qualificados e aulas muito dinâmicas.</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <div class="name">Carlo Dias</div>
-        <p>Recomendo demais! O método de ensino é diferenciado e os resultados aparecem rapidamente. Estou muito satisfeito!</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <div class="name">Carlo Dias</div>
-        <p>Ótima estrutura, professores nativos e metodologia moderna. O CÉOS transformou minha relação com o inglês.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contato">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <img src="assets/img/logo.png" alt="CÉOS" />
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/2-idiomas.webp"
+            alt="+ de 10 Idiomas"
+          />
+          <p class="dif-label">+ de 10</p>
+          <p class="dif-sub">IDIOMAS</p>
         </div>
-        <div class="footer-social">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/3-metodologia.webp"
+            alt="5 Anos de Metodologia"
+          />
+          <p class="dif-label">5 anos</p>
+          <p class="dif-sub">METODOLOGIA APROVADA E COMPROVADA</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/4-cambridge.webp"
+            alt="Certificado Cambridge"
+          />
+          <p class="dif-label">Certificado</p>
+          <p class="dif-sub">CAMBRIDGE ENGLISH</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/5-business.webp"
+            alt="CÉOS Business"
+          />
+          <p class="dif-label">CÉOS</p>
+          <p class="dif-sub">BUSINESS</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/6-colaboradores.webp"
+            alt="Prepare seus Colaboradores"
+          />
+          <p class="dif-sub">
+            PREPARE SEUS COLABORADORES PARA UM MUNDO CADA VEZ MAIS GLOBALIZADO
+          </p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/7-dive-in.webp"
+            alt="CÉOS Dive In"
+          />
+          <p class="dif-sub">CÉOS DIVE IN</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/8-educacao-inclusiva.webp"
+            alt="Educação Inclusiva"
+          />
+          <p class="dif-sub">EDUCAÇÃO INCLUSIVA</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/9-floating-class.webp"
+            alt="Floating Class"
+          />
+          <p class="dif-sub">FLOATING CLASS</p>
+        </div>
+
+        <div class="dif-card">
+          <img
+            src="assets/img/diferenciais/10-avaliacao.webp"
+            alt="Avaliação Contínua"
+          />
+          <p class="dif-sub">AVALIAÇÃO CONTÍNUA</p>
         </div>
       </div>
-      <div class="footer-unidade">
-        <h3>Conheça nossa <span>unidade</span></h3>
-        <p>
-          R. Dr. Curvelo Cavalcanti, 234 - Sobreloja<br />
-          Centro, Itaguaí - RJ, CEP 23810-230
-        </p>
-        <p>(21) 96409-1584 &nbsp;|&nbsp; (21) 96560-9709</p>
-        <div class="footer-map">
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+      <h2 class="faq-title">FAQ</h2>
+      <div class="faq-grid">
+        <!-- Coluna esquerda -->
+        <div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>O curso oferece certificado?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Sim! Ao concluir o curso, o aluno recebe um certificado de
+              conclusão reconhecido pelo mercado.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>As aulas são presenciais ou on-line?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Oferecemos ambas as modalidades. O aluno pode escolher o formato
+              que melhor se adapta à sua rotina.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Aulas remotas são gravadas?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Sim, as aulas remotas são gravadas e ficam disponíveis por um
+              período para revisão.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Qual tempo de duração do curso?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              A duração varia de acordo com o idioma e o nível do aluno. Em
+              média, os cursos têm duração de 1 a 3 anos.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Há descontos para empresas, familiares ou grupos?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Sim! Temos planos especiais para grupos, empresas e famílias.
+              Entre em contato para saber mais.
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna direita -->
+        <div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Quem pode estudar no CÉOS?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Qualquer pessoa a partir dos 5 anos de idade pode estudar no CÉOS.
+              Temos turmas para todas as idades.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Preciso ter conhecimento prévio?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Não! Temos turmas do nível básico ao avançado. Realizamos uma
+              avaliação de nivelamento gratuitamente.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Posso fazer aula experimental?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Sim! Oferecemos uma aula experimental gratuita para que você
+              conheça nossa metodologia.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Quais são as formas de pagamento?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Aceitamos cartão de crédito, débito, boleto bancário e PIX. Também
+              temos opções de parcelamento.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Qual é a metodologia de ensino da CÉOS?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              Nossa metodologia é comunicativa e imersiva, focada na conversação
+              prática desde a primeira aula.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+      <h2 class="section-title">O que falam do <span>CÉOS</span>?</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img
+              src="https://placehold.co/56x56/e0c080/333?text=CD"
+              alt="Carla Dias"
+              class="testimonial-avatar"
+            />
+            <div>
+              <div class="name">Carla Dias</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>Atendimento excelente, superou todas as minhas expectativas!</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img
+              src="https://placehold.co/56x56/e0c080/333?text=MS"
+              alt="Marcos Silva"
+              class="testimonial-avatar"
+            />
+            <div>
+              <div class="name">Marcos Silva</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>
+            A melhor escola de idiomas da região! Ambiente acolhedor e aulas
+            muito dinâmicas.
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img
+              src="https://placehold.co/56x56/e0c080/333?text=AL"
+              alt="Ana Lima"
+              class="testimonial-avatar"
+            />
+            <div>
+              <div class="name">Ana Lima</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>
+            Recomendo demais! O método de ensino é diferenciado e os resultados
+            aparecem rapidamente.
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img
+              src="https://placehold.co/56x56/e0c080/333?text=RF"
+              alt="Rafael Ferreira"
+              class="testimonial-avatar"
+            />
+            <div>
+              <div class="name">Rafael Ferreira</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>
+            Ótima estrutura e metodologia moderna. O CÉOS transformou minha
+            relação com o inglês.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+      <div class="footer-inner">
+        <!-- Coluna 1: Logo -->
+        <div class="footer-col-logo">
+          <img
+            src="assets/img/logo-full.png"
+            alt="CÉOS emblema"
+            class="footer-emblem"
+          />
+        </div>
+
+        <!-- Coluna 2: Informações -->
+        <div class="footer-col-info">
+          <h3 class="footer-heading">
+            Conheça nossa<br /><span>unidade</span>
+          </h3>
+          <address>
+            <p>
+              R. DR. CURVELO CAVALCANTI, 234<br />SOBRELOJA 1 PISO – CENTRO,<br />ITAGUAÍ
+              – RJ, 23810-200
+            </p>
+            <p>
+              CONTATO@CEOSESCOLADEIDIOMAS.COM.BR<br />SECRETARIA@CEOSESCOLADEIDIOMAS.COM.BR
+            </p>
+            <p>(21) 96560-9709</p>
+          </address>
+          <div class="footer-social">
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Coluna 3: Mapa -->
+        <div class="footer-col-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.9!2d-43.7985!3d-22.8610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDUxJzM5LjYiUyA0M8KwNDcnNTQuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
             allowfullscreen=""
@@ -375,12 +510,11 @@
           ></iframe>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2024 CÉOS Escola de Idiomas. Todos os direitos reservados.
-    </div>
-  </footer>
+      <div class="footer-bottom">
+        &copy; 2024 CÉOS Escola de Idiomas. Todos os direitos reservados.
+      </div>
+    </footer>
 
-  <script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
