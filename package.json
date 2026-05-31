@@ -1,0 +1,29 @@
+{
+  "name": "ceos-idiomas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve":      "http-server . -p 8080 -c-1 --silent",
+    "screenshots": "node tests/screenshots.js",
+    "lighthouse": "node tests/lighthouse.js",
+    "test":       "http-server . -p 8080 -c-1 --silent & sleep 2 && node tests/screenshots.js && node tests/lighthouse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamatopotter/ceos-idiomas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yamatopotter/ceos-idiomas/issues"
+  },
+  "homepage": "https://github.com/yamatopotter/ceos-idiomas#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "http-server": "^14.1.1",
+    "lighthouse": "^13.3.0",
+    "puppeteer-core": "^25.1.0"
+  }
+}

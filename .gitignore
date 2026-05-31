@@ -1,0 +1,4 @@
+node_modules/
+tests/lighthouse/
+tests/screenshots/
+package-lock.json
