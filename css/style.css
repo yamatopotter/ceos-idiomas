@@ -90,7 +90,7 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: url("../assets/img/papel-rasgado.png") 50% calc(var(--paper-h) * -0.12) / 100% var(--paper-h) no-repeat;
+  background: url("../assets/img/papel-rasgado.webp") 50% calc(var(--paper-h) * -0.12) / 100% var(--paper-h) no-repeat;
   box-shadow: none;
   min-height: calc(var(--paper-h) * 0.88);
   width: 100%;
