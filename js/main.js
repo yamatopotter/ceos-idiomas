@@ -62,23 +62,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-['.section-title', '.section-subtitle', '.about-title'].forEach(sel => {
-  document.querySelectorAll(sel).forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
-});
-
-document.querySelectorAll('.about-text > p').forEach((el, i) => {
+document.querySelectorAll('.about-section, .courses-section, .diferenciais-section, .faq-section, .testimonials-section, footer').forEach(el => {
   el.classList.add('reveal');
-  el.style.transitionDelay = `${i * 0.1}s`;
   revealObserver.observe(el);
-});
-
-['.course-card', '.dif-card', '.testimonial-card', '.faq-item'].forEach(sel => {
-  document.querySelectorAll(sel).forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = `${(i % 6) * 0.07}s`;
-    revealObserver.observe(el);
-  });
 });
