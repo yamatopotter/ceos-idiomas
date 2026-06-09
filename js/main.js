@@ -33,3 +33,63 @@ if (dots.length) {
     dots[current].classList.add('active');
   }, 3000);
 }
+
+// Testimonials slider controls
+const testimonialsGrid = document.querySelector('.testimonials-grid');
+const prevBtn = document.querySelector('.testimonials-prev');
+const nextBtn = document.querySelector('.testimonials-next');
+const testimonialDots = document.querySelectorAll('.testimonials-dots .dot');
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+const totalSlides = testimonialCards.length;
+let currentSlide = 0;
+
+function goToSlide(index) {
+  currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+  const cardWidth = testimonialsGrid.scrollWidth / totalSlides;
+  testimonialsGrid.scrollTo({ left: currentSlide * cardWidth, behavior: 'smooth' });
+  testimonialDots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+}
+
+prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
+nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
+testimonialDots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+
+testimonialsGrid?.addEventListener('scroll', () => {
+  const cardWidth = testimonialsGrid.scrollWidth / totalSlides;
+  const newIndex = Math.round(testimonialsGrid.scrollLeft / cardWidth);
+  if (newIndex !== currentSlide) {
+    currentSlide = newIndex;
+    testimonialDots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+}, { passive: true });
+
+// Reveal on scroll
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+['.section-title', '.section-subtitle', '.about-title'].forEach(sel => {
+  document.querySelectorAll(sel).forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+});
+
+document.querySelectorAll('.about-text > p').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${i * 0.1}s`;
+  revealObserver.observe(el);
+});
+
+['.course-card', '.dif-card', '.testimonial-card', '.faq-item'].forEach(sel => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${(i % 6) * 0.07}s`;
+    revealObserver.observe(el);
+  });
+});
