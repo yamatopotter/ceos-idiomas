@@ -1079,3 +1079,45 @@ footer {
     padding-bottom: 24px;
   }
 }
+
+/* ===== DESKTOP (min-width: 769px) ===== */
+@media (min-width: 769px) {
+  /* Títulos de seção — inline e centralizados no desktop */
+  .section-title {
+    text-align: center;
+  }
+  .section-title span {
+    display: inline;
+    font-size: 1em;
+    line-height: inherit;
+    text-align: inherit;
+  }
+
+  /* Hero — altura mínima definida no desktop */
+  .hero {
+    min-height: 55vh;
+  }
+  .hero-bg {
+    min-height: 55vh;
+    height: 55vh;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Cursos — card destaque ocupa 2 das 5 colunas */
+  .course-card--featured {
+    grid-column: span 2;
+  }
+
+  /* Cursos — CTA oculto no desktop */
+  .courses-cta {
+    display: none;
+  }
+
+  /* Subtitle alinhada ao centro com o título */
+  .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
