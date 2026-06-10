@@ -4,12 +4,10 @@ const navLinks = document.getElementById('navLinks');
 const navClose = document.getElementById('navClose');
 
 const closeMenu = () => navLinks?.classList.remove('open');
-const openMenu  = () => navLinks?.classList.add('open');
 
 navToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
 navClose?.addEventListener('click', closeMenu);
 
-// Fecha ao clicar em qualquer link
 navLinks?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', closeMenu);
 });
@@ -23,11 +21,16 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// Hero dots (simple carousel placeholder)
+// Hero dots — fade on slide change
+const heroBg = document.querySelector('.hero-bg');
 const dots = document.querySelectorAll('.hero-dots span');
 let current = 0;
 if (dots.length) {
   setInterval(() => {
+    if (heroBg) {
+      heroBg.style.opacity = '0';
+      setTimeout(() => { heroBg.style.opacity = '1'; }, 350);
+    }
     dots[current].classList.remove('active');
     current = (current + 1) % dots.length;
     dots[current].classList.add('active');
@@ -35,18 +38,16 @@ if (dots.length) {
 }
 
 // Testimonials slider controls
-const testimonialsGrid = document.querySelector('.testimonials-grid');
+const testimonialsTrack = document.querySelector('.testimonials-track');
 const prevBtn = document.querySelector('.testimonials-prev');
 const nextBtn = document.querySelector('.testimonials-next');
 const testimonialDots = document.querySelectorAll('.testimonials-dots .dot');
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const totalSlides = testimonialCards.length;
+const totalSlides = testimonialDots.length;
 let currentSlide = 0;
 
 function goToSlide(index) {
   currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
-  const cardWidth = testimonialsGrid.scrollWidth / totalSlides;
-  testimonialsGrid.scrollTo({ left: currentSlide * cardWidth, behavior: 'smooth' });
+  if (testimonialsTrack) testimonialsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
   testimonialDots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
 }
 
@@ -54,16 +55,7 @@ prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
 nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
 testimonialDots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
 
-testimonialsGrid?.addEventListener('scroll', () => {
-  const cardWidth = testimonialsGrid.scrollWidth / totalSlides;
-  const newIndex = Math.round(testimonialsGrid.scrollLeft / cardWidth);
-  if (newIndex !== currentSlide) {
-    currentSlide = newIndex;
-    testimonialDots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-  }
-}, { passive: true });
-
-// Reveal on scroll
+// ===== ANIMAÇÕES EM ORDEM DE EXIBIÇÃO =====
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -71,25 +63,67 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-['.section-title', '.section-subtitle', '.about-title'].forEach(sel => {
-  document.querySelectorAll(sel).forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
-});
-
-document.querySelectorAll('.about-text > p').forEach((el, i) => {
+function reveal(el, delay = 0) {
+  if (!el) return;
   el.classList.add('reveal');
-  el.style.transitionDelay = `${i * 0.1}s`;
+  if (delay > 0) el.style.transitionDelay = `${delay}s`;
   revealObserver.observe(el);
-});
+}
 
-['.course-card', '.dif-card', '.testimonial-card', '.faq-item'].forEach(sel => {
-  document.querySelectorAll(sel).forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = `${(i % 6) * 0.07}s`;
-    revealObserver.observe(el);
-  });
-});
+// About — título, parágrafos e imagem em ordem
+const aboutSection = document.querySelector('.about-section');
+if (aboutSection) {
+  reveal(aboutSection.querySelector('.about-title'), 0);
+  aboutSection.querySelectorAll('.about-text p').forEach((el, i) => reveal(el, 0.1 + i * 0.1));
+  reveal(aboutSection.querySelector('.about-image'), 0.2);
+}
+
+// Nossos Cursos — título → subtítulo → cards → CTA
+const coursesSection = document.querySelector('.courses-section');
+if (coursesSection) {
+  reveal(coursesSection.querySelector('.section-title'), 0);
+  reveal(coursesSection.querySelector('.section-subtitle'), 0.1);
+  coursesSection.querySelectorAll('.course-card').forEach((el, i) => reveal(el, 0.15 + i * 0.06));
+  reveal(coursesSection.querySelector('.courses-cta'), 0.7);
+}
+
+// Nossos Diferenciais — título → subtítulo → cards
+const difSection = document.querySelector('.diferenciais-section');
+if (difSection) {
+  reveal(difSection.querySelector('.section-title'), 0);
+  reveal(difSection.querySelector('.section-subtitle'), 0.1);
+  difSection.querySelectorAll('.dif-card').forEach((el, i) => reveal(el, 0.15 + i * 0.06));
+}
+
+// FAQ — desktop: coluna a coluna em pares de linha; mobile: DOM order
+const faqSection = document.querySelector('.faq-section');
+if (faqSection) {
+  reveal(faqSection.querySelector('.faq-title'), 0);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const cols = [...faqSection.querySelectorAll('.faq-grid > div')];
+  if (isMobile || cols.length < 2) {
+    // Coluna única — anima em ordem sequencial do DOM
+    let d = 0.1;
+    cols.forEach(col => col.querySelectorAll('.faq-item').forEach(el => { reveal(el, d); d += 0.07; }));
+  } else {
+    // Duas colunas — anima linha a linha (col1[r] e col2[r] juntas)
+    const col1 = [...cols[0].querySelectorAll('.faq-item')];
+    const col2 = [...cols[1].querySelectorAll('.faq-item')];
+    const rows = Math.max(col1.length, col2.length);
+    for (let r = 0; r < rows; r++) {
+      reveal(col1[r], 0.1 + r * 0.1);
+      reveal(col2[r], 0.15 + r * 0.1);
+    }
+  }
+}
+
+// O que falam do CÉOS — desktop: cada card sobe em ordem; mobile: slider cuida
+const testimonialsSection = document.querySelector('.testimonials-section');
+if (testimonialsSection) {
+  reveal(testimonialsSection.querySelector('.section-title'), 0);
+  if (!window.matchMedia('(max-width: 768px)').matches) {
+    testimonialsSection.querySelectorAll('.testimonial-card').forEach((el, i) => reveal(el, 0.1 + i * 0.12));
+  }
+}
