@@ -676,11 +676,12 @@ footer {
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes heroZoom {
-  from { transform: scale(1.06); opacity: 0.85; }
-  to   { transform: scale(1);    opacity: 1; }
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
 }
 .hero-bg {
   animation: heroZoom 1.4s ease forwards;
+  transition: opacity 0.35s ease;
 }
 
 .reveal {
