@@ -241,7 +241,6 @@ body {
 .about-title .black { color: #444; }
 .about-title .yellow {
   color: var(--yellow);
-  font-style: italic;
   font-size: 1.2em;
   text-shadow: 4px 4px 0 #aaa;
   display: inline;
