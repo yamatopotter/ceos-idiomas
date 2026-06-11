@@ -239,16 +239,18 @@ body {
   margin-bottom: clamp(20px, 3vw, 52px);
 }
 .about-title .black {
-  color: #444;
-  font-size: 0.7em;
-  vertical-align: top;
+  color: #333;
+  font-weight: 700;
+  font-size: 2rem;
+  vertical-align: middle;
   display: inline-block;
-  padding-top: 18px;
+  padding-top: 5px;
 }
 .about-title .yellow {
   color: var(--yellow);
-  font-size: 1.2em;
-  text-shadow: 4px 4px 0 #aaa;
+  font-weight: 800;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 0 #999;
   display: inline;
   vertical-align: baseline;
 }
@@ -874,12 +876,13 @@ footer {
     display: none;
   }
   .about-title {
-    font-size: var(--fs-xl);
+    font-size: var(--fs-lg);
+    text-align: center;
   }
-  .about-title .yellow {
-    font-size: 1.2em;
+  .about-title .black {
+    padding-top: 0;
+    margin-top: -35px;
   }
-
   /* ── Cursos: 3 colunas + botão CTA ── */
   .courses-section .section-title {
     max-width: 170px;
