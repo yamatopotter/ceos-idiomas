@@ -391,6 +391,12 @@ body {
   flex-shrink: 0;
   font-size: clamp(40px, 5vw, 72px);
 }
+.dif-stars {
+  display: none;
+  width: clamp(40px, 6.5vw, 110px);
+  height: clamp(40px, 6.5vw, 110px);
+  object-fit: contain;
+}
 
 /* ===== FAQ ===== */
 .faq-section {
@@ -667,6 +673,13 @@ footer {
   font-size: var(--fs-sm);
   color: rgba(27, 58, 107, 0.6);
   text-align: center;
+}
+
+/* ===== Botão Estude Conosco — azul claro no desktop ===== */
+.nav-links .nav-cta-item a.btn-estude {
+  background: #a9c5df !important;
+  background-color: #a9c5df !important;
+  color: #1b3a6b !important;
 }
 
 /* ===== CTA cursos (oculto no desktop) ===== */
@@ -1077,5 +1090,150 @@ footer {
 
   .footer-inner {
     padding-bottom: 24px;
+  }
+}
+
+/* ===== DESKTOP (min-width: 769px) ===== */
+@media (min-width: 769px) {
+  /* Títulos de seção — inline e centralizados no desktop */
+  .section-title {
+    text-align: center;
+  }
+  .section-title span {
+    display: inline;
+    font-size: 1em;
+    line-height: inherit;
+    text-align: inherit;
+  }
+
+  /* Navbar — botão Estude Conosco amarelo */
+  .navbar .btn-estude {
+    background: var(--yellow) !important;
+    color: var(--dark-blue) !important;
+  }
+
+  /* Hero — altura mínima definida no desktop */
+  .hero {
+    min-height: 55vh;
+  }
+  .hero-bg {
+    min-height: 55vh;
+    height: 55vh;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Cursos — CTA e subtítulo ocultos no desktop */
+  .courses-cta {
+    display: none;
+  }
+  .courses-section .section-subtitle {
+    display: none;
+  }
+
+  /* Cursos — título: Nossos à esquerda, cursos deslocado à direita */
+  .courses-section .section-title {
+    text-align: left;
+    width: fit-content;
+    margin-left: 0;
+    margin-right: 0;
+    line-height: 0.9;
+  }
+  .courses-section .section-title span {
+    display: block;
+    text-align: right;
+    font-size: 1.4em;
+    margin-left: 120px;
+    line-height: 0.85;
+  }
+
+  /* Diferenciais — subtítulo oculto, espaçamento e background milimetrado */
+  .diferenciais-section .section-subtitle {
+    display: none;
+  }
+  .diferenciais-section {
+    background-color: #fff;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .diferenciais-section .section-title {
+    margin-bottom: clamp(48px, 5vw, 96px);
+  }
+
+  /* Diferenciais — troféu oculto no desktop, estrelas visíveis */
+  .dif-trophy {
+    display: none;
+  }
+  .dif-stars {
+    display: block;
+  }
+
+  /* Diferenciais — conteúdo centralizado nos cards */
+  .dif-card {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Diferenciais — card destaque igual aos demais no desktop */
+  .dif-card--featured {
+    background: #f4f4f4;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(6px, 0.9vw, 16px);
+    padding: clamp(18px, 2.2vw, 40px) clamp(12px, 1.4vw, 26px) clamp(16px, 1.8vw, 32px);
+    order: unset;
+    grid-column: unset;
+  }
+  .dif-card--featured .dif-label {
+    text-align: center;
+  }
+  .dif-card--featured .dif-sub {
+    text-align: center;
+  }
+
+  /* About — reduz "About" e remove itálico de "us" */
+  .about-title .black {
+    font-size: 0.7em;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 18px;
+  }
+  .about-title .yellow {
+    font-style: normal;
+  }
+
+  /* Subtitle alinhada ao centro com o título */
+  .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Rodapé — título "Conheça nossa Unidade" */
+  .footer-heading {
+    word-spacing: 10px;
+    line-height: 0.4;
+  }
+  .footer-heading span {
+    font-style: normal;
+    font-weight: 800;
+    text-shadow: 2px 2px 0 #999;
+    margin-left: 15px;
+  }
+
+  /* Rodapé — ícones sociais todos brancos e mesmo tamanho */
+  .footer-social a {
+    font-size: var(--fs-lg);
+    color: #fff;
+  }
+  .footer-social .icon-whatsapp,
+  .footer-social .icon-facebook,
+  .footer-social .icon-instagram,
+  .footer-social .icon-linkedin {
+    color: #fff;
   }
 }
