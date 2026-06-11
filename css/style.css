@@ -238,7 +238,13 @@ body {
   line-height: 1.1;
   margin-bottom: clamp(20px, 3vw, 52px);
 }
-.about-title .black { color: #444; }
+.about-title .black {
+  color: #444;
+  font-size: 0.7em;
+  vertical-align: top;
+  display: inline-block;
+  padding-top: 18px;
+}
 .about-title .yellow {
   color: var(--yellow);
   font-size: 1.2em;
@@ -1194,16 +1200,7 @@ footer {
     text-align: center;
   }
 
-  /* About — reduz "About" e remove itálico de "us" */
-  .about-title .black {
-    font-size: 0.7em;
-    vertical-align: top;
-    display: inline-block;
-    padding-top: 18px;
-  }
-  .about-title .yellow {
-    font-style: normal;
-  }
+  /* About — itálico de "us" já removido globalmente */
 
   /* Subtitle alinhada ao centro com o título */
   .section-subtitle {
