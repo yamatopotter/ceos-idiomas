@@ -687,6 +687,30 @@ footer {
   border: 0;
 }
 
+/* Portais de acesso */
+.footer-portals {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: clamp(10px, 1vw, 18px) 0;
+  border-top: 1px solid rgba(27, 58, 107, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(16px, 2.5vw, 40px);
+}
+.footer-portals a {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #1b3a6b;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.footer-portals a:hover {
+  color: var(--yellow);
+}
+
 .footer-bottom {
   max-width: var(--container-w);
   margin: 0 auto;
