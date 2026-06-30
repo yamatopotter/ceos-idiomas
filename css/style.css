@@ -297,6 +297,9 @@ body {
   margin-top: clamp(28px, 3.5vw, 60px);
 }
 .course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #fff;
   border: 1px solid #eee;
   border-radius: clamp(10px, 1.4vw, 24px);
@@ -325,17 +328,229 @@ body {
 }
 .btn-saiba {
   display: inline-block;
+  margin-top: auto;
   background: var(--yellow);
-  color: #333;
+  color: #fff;
   font-size: var(--fs-sm);
   font-weight: 700;
   padding: clamp(3px, 0.4vw, 7px) clamp(12px, 1.4vw, 22px);
   border-radius: 20px;
   text-decoration: none;
-  transition: background 0.2s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
 }
 .btn-saiba:hover {
   background: #e6b000;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+.course-desc {
+  font-size: clamp(13px, 0.95vw, 16px);
+  line-height: 1.5;
+  color: #666;
+  margin-bottom: clamp(12px, 1.2vw, 20px);
+}
+
+/* ===== PROGRAMAS ESPECIAIS (Business / Dive In) ===== */
+.special-programs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-cards);
+  margin-top: clamp(28px, 3.5vw, 56px);
+}
+.special-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(8px, 1vw, 16px);
+  padding: clamp(28px, 3vw, 52px) clamp(20px, 2.4vw, 40px);
+  border: none;
+  border-radius: clamp(14px, 1.6vw, 28px);
+  cursor: pointer;
+  font-family: inherit;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.special-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 80% 0%,
+    rgba(255, 255, 255, 0.16),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+.special-card--business {
+  background: linear-gradient(140deg, var(--dark-blue), var(--navy));
+}
+.special-card--divein {
+  background: linear-gradient(140deg, #0e7c8b, #07344a);
+}
+.special-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+.special-badge {
+  position: relative;
+  z-index: 1;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: clamp(11px, 0.8vw, 14px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+.special-icon {
+  position: relative;
+  z-index: 1;
+  width: clamp(64px, 7vw, 110px);
+  height: clamp(64px, 7vw, 110px);
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+.special-title {
+  position: relative;
+  z-index: 1;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+.special-title span {
+  color: var(--yellow);
+}
+.special-text {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(14px, 1.05vw, 18px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 42ch;
+  margin-bottom: clamp(6px, 0.8vw, 12px);
+}
+.special-link {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  padding: clamp(6px, 0.6vw, 10px) clamp(20px, 1.8vw, 32px);
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.special-card:hover .special-link {
+  background: #e6b000;
+  transform: scale(1.04);
+}
+.btn-saiba {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== MODAL DE CURSO ===== */
+.course-modal[hidden] {
+  display: none;
+}
+.course-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.course-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  animation: modalFade 0.2s ease;
+}
+.course-modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: clamp(14px, 1.6vw, 24px);
+  padding: clamp(28px, 3vw, 48px);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalPop 0.25s ease;
+}
+.course-modal-close {
+  position: absolute;
+  top: clamp(12px, 1.2vw, 18px);
+  right: clamp(12px, 1.2vw, 18px);
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.course-modal-close:hover {
+  background: #e0e0e0;
+}
+.course-modal-close svg {
+  width: 14px;
+  height: 14px;
+  fill: #555;
+}
+.course-modal-img {
+  width: clamp(80px, 9vw, 110px);
+  height: clamp(80px, 9vw, 110px);
+  object-fit: contain;
+  margin-bottom: clamp(12px, 1.4vw, 20px);
+}
+.course-modal-title {
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 700;
+  color: #333;
+  margin-bottom: clamp(12px, 1.2vw, 18px);
+}
+.course-modal-desc {
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: clamp(20px, 2vw, 30px);
+}
+.course-modal .btn-estude {
+  color: #fff !important;
+}
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
 }
 
 /* ===== PAPEL RASGADO ===== */
@@ -358,6 +573,7 @@ body {
 .diferenciais-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 1fr;
   gap: var(--gap-cards);
 }
 .dif-card {
@@ -368,6 +584,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: clamp(6px, 0.9vw, 16px);
 }
 .dif-card img {
@@ -961,6 +1178,12 @@ footer {
   .course-card .btn-saiba {
     font-size: clamp(10px, 2.8vw, 13px);
     padding: 3px 8px;
+  }
+  .course-card .course-desc {
+    display: none;
+  }
+  .special-programs {
+    grid-template-columns: 1fr;
   }
 
   /* ── Diferenciais: 3 colunas + destaque ── */

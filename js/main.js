@@ -127,3 +127,107 @@ if (testimonialsSection) {
     testimonialsSection.querySelectorAll('.testimonial-card').forEach((el, i) => reveal(el, 0.1 + i * 0.12));
   }
 }
+
+// ===== MODAL DE CURSOS =====
+const cursosData = {
+  ingles: {
+    titulo: 'Inglês',
+    img: 'assets/img/idiomas/1.webp',
+    desc: 'Seja no curso de Inglês Britânico e/ou Norte-Americano, estimulamos a conversação do aluno de forma natural, usando temas familiares e assimilando gramática e vocabulário do básico ao avançado. Contamos ainda com cursos especiais para Viagens, Entrevista de emprego, Business e a Floating Class.',
+  },
+  espanhol: {
+    titulo: 'Espanhol',
+    img: 'assets/img/idiomas/2.webp',
+    desc: 'No curso de Espanhol você vai aprender um dos idiomas mais falados do mundo de maneira dinâmica, em um cronograma repleto de atividades práticas e conversação. A cada aula o aluno se familiariza ainda mais com a cultura hispânica, desenvolvendo gramática e vocabulário. ¡Estudia español con profesores nativos y vive el idioma desde la primera clase!',
+  },
+  frances: {
+    titulo: 'Francês',
+    img: 'assets/img/idiomas/3.webp',
+    desc: 'Assim como o português, o francês tem origem no latim; usamos essas raízes e semelhanças para desenvolver o aprendizado, através da conversação e de atividades práticas que levam à familiarização com o novo idioma. Sem contar a metodologia única que só um professor nativo pode apresentar. C\'est parfait!',
+  },
+  alemao: {
+    titulo: 'Alemão',
+    img: 'assets/img/idiomas/4.webp',
+    desc: 'No curso de Alemão os alunos são levados a uma viagem por outra cultura através do aprendizado do idioma. Durante as aulas você é encorajado(a) a incluir no seu dia a dia o novo vocabulário e as novas expressões alemãs, para que o aprendizado seja mais rápido e efetivo.',
+  },
+  italiano: {
+    titulo: 'Italiano',
+    img: 'assets/img/idiomas/5.webp',
+    desc: 'Aprenda um novo idioma de maneira simples e objetiva com o nosso curso de Italiano. Sinta-se na Europa através de aulas dinâmicas, repletas de atividades e conversação, e torne-se fluente na fala, audição, leitura e escrita. Com nosso \'Professore\' nativo, que tem um real amor pela Itália, você ganhará fluência e muita cultura italiana. Molto piacere in conoscerlo!',
+  },
+  chines: {
+    titulo: 'Chinês',
+    img: 'assets/img/idiomas/6.webp',
+    desc: 'No curso de Mandarim do Céos você se torna fluente de verdade, dominando a fala, a compreensão, a leitura e a escrita de um dos idiomas mais antigos e bonitos da humanidade. Com material dinâmico e moderno, você fará uma viagem ao oriente e, com a ajuda de um professor nativo, aprenderá o idioma da forma mais natural possível. 好!',
+  },
+  coreano: {
+    titulo: 'Coreano',
+    img: 'assets/img/idiomas/7.webp',
+    desc: 'Em nosso curso de Coreano você aprenderá o idioma que vem se destacando cada dia mais pelo mundo. As aulas preparam você tanto para curtir seu K-pop quanto para entrevistas de emprego em cargos de empresas multinacionais, dominando o idioma.',
+  },
+  japones: {
+    titulo: 'Japonês',
+    img: 'assets/img/idiomas/8.webp',
+    desc: 'No curso de Japonês do Céos você mergulha na fascinante cultura japonesa enquanto desenvolve habilidades reais de comunicação. Com aulas conduzidas por professores nativos, aprenderá a falar, ouvir, ler e escrever com naturalidade e confiança. Seja para assistir animes sem legenda, viajar ao Japão ou atuar no mercado global, nosso curso é o caminho certo. はじめまして！(Hajimemashite!) — Muito prazer!',
+  },
+  arabe: {
+    titulo: 'Árabe',
+    img: 'assets/img/idiomas/9.webp',
+    desc: 'Aprender Árabe no Céos é uma experiência cultural e linguística transformadora. Com o acompanhamento de professores nativos, você dominará uma das línguas mais faladas do mundo, explorando desde o alfabeto até expressões do dia a dia com fluência e segurança. Nossas aulas combinam tradição e modernidade. Em pouco tempo você estará se comunicando com confiança e dizendo: السلام عليكم (As-salamu alaykum) — Que a paz esteja com você!',
+  },
+  libras: {
+    titulo: 'Libras',
+    img: 'assets/img/idiomas/10.webp',
+    desc: 'Libras, a Língua Brasileira de Sinais, é uma língua de modalidade gestual-visual em que é possível se comunicar através de gestos e expressões faciais e corporais. Em nosso curso você se torna apto(a) a se comunicar com qualquer falante da língua, surdo ou não.',
+  },
+  business: {
+    titulo: 'CÉOS Business',
+    img: 'assets/img/diferenciais/5-business.webp',
+    desc: 'Nosso curso de Business English vai além do inglês de negócios tradicional: oferece um aprendizado com foco total nas situações e no vocabulário específicos da sua área de atuação. Nosso diferencial é o vocabulário setorial profundo — seja ele portuário, logístico, médico ou qualquer outro segmento, você aprende as expressões e os termos técnicos que realmente usa no dia a dia. O conteúdo abrange vocabulário corporativo e etiqueta empresarial, comunicação escrita de alto impacto (e-mails, relatórios e propostas), técnicas de apresentação e negociação, diferenças culturais e éticas, além de liderança e gestão de equipes em contextos multilíngues. Ideal para profissionais que buscam aprimorar negociação, apresentação e liderança em ambientes corporativos e internacionais. Temos convênios com multinacionais — consulte parcerias empresariais.',
+  },
+  divein: {
+    titulo: 'CÉOS Dive In',
+    img: 'assets/img/diferenciais/7-dive-in.webp',
+    desc: 'Viva o inglês. Respire o inglês. Pense em inglês. O CÉOS Dive In é a nossa experiência de imersão, criada para quem quer destravar a comunicação de verdade e acelerar o aprendizado de forma prática, intensa e memorável. Não é um curso comum: é um ambiente em que o inglês é a única língua utilizada e cada situação é pensada para estimular a comunicação real — como fazer um intercâmbio sem sair do Brasil. Você ganha confiança ao falar, perde o medo de errar, amplia o vocabulário prático e começa a pensar diretamente em inglês. Oferecemos três formatos: Dive In In Company (imersão dentro da própria empresa, intensiva e direcionada à realidade do negócio), Dive In Long Term (imersão de 15 dias em hotel, com rotina totalmente em inglês, ideal para uma virada de chave) e Dive In Short Term (imersão de um fim de semana em hotel, perfeita como porta de entrada para destravar a fala). Valores à consultar.',
+  },
+};
+
+const courseModal = document.getElementById('courseModal');
+const courseModalImg = document.getElementById('courseModalImg');
+const courseModalTitle = document.getElementById('courseModalTitle');
+const courseModalDesc = document.getElementById('courseModalDesc');
+const courseModalCta = document.getElementById('courseModalCta');
+const WHATSAPP_NUMBER = '5521965609709';
+
+function openCourseModal(slug) {
+  const data = cursosData[slug];
+  if (!data || !courseModal) return;
+  courseModalImg.src = data.img;
+  courseModalImg.alt = data.titulo;
+  courseModalTitle.textContent = data.titulo;
+  courseModalDesc.textContent = data.desc;
+  if (courseModalCta) {
+    const msg = `Olá! Vim pelo site da CÉOS e tenho interesse em ${data.titulo}. Gostaria de mais informações!`;
+    courseModalCta.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+  courseModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCourseModal() {
+  if (!courseModal) return;
+  courseModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-curso]').forEach(btn => {
+  btn.addEventListener('click', () => openCourseModal(btn.dataset.curso));
+});
+
+courseModal?.querySelectorAll('[data-close]').forEach(el => {
+  el.addEventListener('click', closeCourseModal);
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && courseModal && !courseModal.hidden) closeCourseModal();
+});
