@@ -21,20 +21,50 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// Hero dots — fade on slide change
-const heroBg = document.querySelector('.hero-bg');
-const dots = document.querySelectorAll('.hero-dots span');
-let current = 0;
-if (dots.length) {
-  setInterval(() => {
-    if (heroBg) {
-      heroBg.style.opacity = '0';
-      setTimeout(() => { heroBg.style.opacity = '1'; }, 350);
-    }
-    dots[current].classList.remove('active');
-    current = (current + 1) % dots.length;
-    dots[current].classList.add('active');
-  }, 3000);
+// Hero slider — desliza entre os slides com autoplay, setas, dots, progresso e animação
+const heroTrack = document.getElementById('heroTrack');
+const heroSlides = heroTrack ? heroTrack.querySelectorAll('.hero-slide') : [];
+const heroDots = document.querySelectorAll('#heroDots span');
+const heroPrev = document.getElementById('heroPrev');
+const heroNext = document.getElementById('heroNext');
+const heroProgress = document.querySelector('.hero-progress i');
+let heroIndex = 0;
+let heroTimer;
+
+function heroRestartProgress() {
+  if (!heroProgress) return;
+  heroProgress.style.animation = 'none';
+  void heroProgress.offsetWidth; // reflow para reiniciar a animação
+  heroProgress.style.animation = '';
+}
+
+function heroGoTo(index) {
+  if (!heroTrack || !heroSlides.length) return;
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+  heroDots.forEach((d, i) => d.classList.toggle('active', i === heroIndex));
+  heroSlides.forEach((s, i) => s.classList.toggle('is-active', i === heroIndex));
+  heroRestartProgress();
+}
+
+function heroAutoplay() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
+}
+
+function heroStep(dir) {
+  heroGoTo(heroIndex + dir);
+  heroAutoplay();
+}
+
+if (heroSlides.length) {
+  heroDots.forEach((dot, i) =>
+    dot.addEventListener('click', () => { heroGoTo(i); heroAutoplay(); })
+  );
+  heroPrev?.addEventListener('click', () => heroStep(-1));
+  heroNext?.addEventListener('click', () => heroStep(1));
+  heroGoTo(0);
+  heroAutoplay();
 }
 
 // Testimonials slider controls
