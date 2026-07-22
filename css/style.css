@@ -742,12 +742,13 @@ body {
 }
 .testimonial-card .name {
   font-weight: 700;
-  font-size: var(--fs-sm);
-  margin-bottom: 2px;
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.2;
+  margin-bottom: 3px;
 }
 .testimonial-card p {
-  font-size: var(--fs-sm);
-  line-height: 1.6;
+  font-size: clamp(13.5px, 1vw, 16px);
+  line-height: 1.55;
   color: #333;
 }
 
