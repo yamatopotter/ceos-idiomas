@@ -996,7 +996,8 @@ footer {
     --fs-xl: clamp(32px, 9vw, 52px);
     /* papel menor no mobile */
     --paper-h: clamp(120px, 32vw, 200px);
-    --topbar-h: 50px;
+    /* +20px para afastar o menu do texto da topbar (par com padding-bottom) */
+    --topbar-h: 70px;
   }
 
   /* ── Top bar: oculta telefone ── */
@@ -1005,7 +1006,8 @@ footer {
   }
   .top-bar {
     justify-content: flex-end;
-    padding: 10px 20px;
+    /* padding-bottom estende o amarelo para manter a sobreposição do papel */
+    padding: 10px 20px 30px;
   }
 
   /* ── Navbar: reposiciona para altura real da topbar mobile ── */
@@ -1042,7 +1044,7 @@ footer {
     height: 100dvh;
     background: #fff;
     z-index: 250;
-    /* layout */
+    /* layout — itens centralizados vertical e horizontalmente */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1052,7 +1054,12 @@ footer {
     /* slide: começa acima da tela */
     transform: translateY(-100%);
     transition: transform 0.35s ease-in-out;
-    overflow: hidden;
+    /* rola se a viewport for muito baixa, sem cortar o topo */
+    overflow-y: auto;
+  }
+  /* garante que os itens ocupem só o necessário e fiquem no centro */
+  .nav-links > li:not(.nav-close-item) {
+    flex: 0 0 auto;
   }
   .nav-links.open {
     transform: translateY(0);
@@ -1340,7 +1347,8 @@ footer {
     --fs-lg: clamp(20px, 6.5vw, 30px);
     --fs-xl: clamp(28px, 10vw, 44px);
     --paper-h: clamp(100px, 28vw, 160px);
-    --topbar-h: 36px;
+    /* +18px para afastar o menu do texto da topbar (par com padding-bottom) */
+    --topbar-h: 54px;
   }
   .top-bar .btn-secretaria {
     font-size: clamp(10px, 3.2vw, 13px);
@@ -1350,7 +1358,7 @@ footer {
   }
 
   .top-bar {
-    padding: 8px 16px;
+    padding: 8px 16px 26px;
   }
 
   .hero {

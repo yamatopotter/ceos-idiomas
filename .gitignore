@@ -1,4 +1,6 @@
 node_modules/
 tests/lighthouse/
 tests/screenshots/
+test-results/
+playwright-report/
 package-lock.json
