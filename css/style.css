@@ -349,10 +349,10 @@ body {
   margin-bottom: clamp(12px, 1.2vw, 20px);
 }
 
-/* ===== PROGRAMAS ESPECIAIS (Business / Dive In) ===== */
+/* ===== PROGRAMAS ESPECIAIS (Business / Dive In / Floating Class) ===== */
 .special-programs {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-cards);
   margin-top: clamp(28px, 3.5vw, 56px);
 }
@@ -391,6 +391,9 @@ body {
 }
 .special-card--divein {
   background: linear-gradient(140deg, #0e7c8b, #07344a);
+}
+.special-card--floatingclass {
+  background: linear-gradient(140deg, #5a4bab, #2a2258);
 }
 .special-card:hover {
   transform: translateY(-6px);
@@ -463,6 +466,13 @@ body {
 }
 
 /* ===== MODAL DE CURSO ===== */
+/* Trava a rolagem da página (html + body) enquanto o modal está aberto,
+   para que só o conteúdo do .course-modal-box role. */
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+  height: 100%;
+}
 .course-modal[hidden] {
   display: none;
 }
@@ -485,19 +495,21 @@ body {
   position: relative;
   background: #fff;
   border-radius: clamp(14px, 1.6vw, 24px);
-  padding: clamp(28px, 3vw, 48px);
   max-width: 520px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: modalPop 0.25s ease;
+  overflow: hidden;
 }
 .course-modal-close {
   position: absolute;
   top: clamp(12px, 1.2vw, 18px);
   right: clamp(12px, 1.2vw, 18px);
+  z-index: 1;
   width: 36px;
   height: 36px;
   border: none;
@@ -517,6 +529,11 @@ body {
   height: 14px;
   fill: #555;
 }
+/* Cabeçalho — imagem e título ficam estáticos, não rolam */
+.course-modal-head {
+  flex: 0 0 auto;
+  padding: clamp(28px, 3vw, 48px) clamp(28px, 3vw, 48px) 0;
+}
 .course-modal-img {
   width: clamp(80px, 9vw, 110px);
   height: clamp(80px, 9vw, 110px);
@@ -527,16 +544,25 @@ body {
   font-size: clamp(24px, 2.4vw, 36px);
   font-weight: 700;
   color: #333;
-  margin-bottom: clamp(12px, 1.2vw, 18px);
+}
+/* Área rolável — somente a descrição rola aqui dentro */
+.course-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: clamp(12px, 1.4vw, 20px) clamp(28px, 3vw, 48px);
 }
 .course-modal-desc {
   font-size: clamp(15px, 1.1vw, 18px);
   line-height: 1.6;
   color: #555;
-  margin-bottom: clamp(20px, 2vw, 30px);
 }
-.course-modal .btn-estude {
+/* Rodapé — botão CTA fixo, fora da rolagem */
+.course-modal .btn-estude.course-modal-cta {
+  flex: 0 0 auto;
+  align-self: center;
   color: #fff !important;
+  margin: clamp(4px, 1vw, 12px) clamp(28px, 3vw, 48px) clamp(28px, 3vw, 48px);
 }
 @keyframes modalFade {
   from {
@@ -567,60 +593,84 @@ body {
   text-align: center;
   background: #fff;
 }
-.diferenciais-grid {
+/* Números — os 3 grandes diferenciais em destaque */
+.dif-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  gap: var(--gap-cards);
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: clamp(12px, 1.6vw, 24px);
+  box-shadow: 0 8px 28px rgba(20, 30, 55, 0.08);
+  overflow: hidden;
 }
-.dif-card {
-  background: #f4f4f4;
-  border-radius: clamp(10px, 1.4vw, 24px);
-  padding: clamp(18px, 2.2vw, 40px) clamp(12px, 1.4vw, 26px)
-    clamp(16px, 1.8vw, 32px);
+.dif-stat {
+  padding: clamp(22px, 2.8vw, 44px) clamp(12px, 1.6vw, 28px);
+  border-right: 1px solid #e6e6e6;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(6px, 0.9vw, 16px);
+  gap: clamp(6px, 0.9vw, 14px);
 }
-.dif-card img {
-  width: clamp(40px, 6.5vw, 110px);
-  height: clamp(40px, 6.5vw, 110px);
+.dif-stat:last-child {
+  border-right: none;
+}
+.dif-stat img {
+  width: clamp(36px, 4.5vw, 64px);
+  height: clamp(36px, 4.5vw, 64px);
   object-fit: contain;
 }
-.dif-label {
+.dif-stat-num {
   font-size: var(--fs-md);
   font-weight: 800;
   color: #222;
   line-height: 1.1;
 }
-.dif-sub {
+.dif-stat-cap {
   font-size: var(--fs-sm);
   font-weight: 700;
   color: #444;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   line-height: 1.4;
-  text-align: center;
 }
-.dif-card--featured {
-  background: none;
-  border: none;
-  box-shadow: none;
+
+/* "E também" — selo/eyebrow que introduz os selos abaixo */
+.dif-and-also {
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dark-blue);
+  text-align: left;
+  margin: clamp(24px, 3vw, 40px) 0 clamp(12px, 1.4vw, 20px);
 }
-.dif-trophy {
-  width: 1em;
-  height: 1em;
-  fill: #111;
-  flex-shrink: 0;
-  font-size: clamp(40px, 5vw, 72px);
+
+/* Selos — atributos complementares, mais leves visualmente */
+.dif-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-cards);
 }
-.dif-stars {
-  display: none;
-  width: clamp(40px, 6.5vw, 110px);
-  height: clamp(40px, 6.5vw, 110px);
+.dif-badge {
+  background: #f4f4f4;
+  border-radius: clamp(10px, 1.2vw, 16px);
+  padding: clamp(14px, 1.7vw, 22px);
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.4vw, 18px);
+  text-align: left;
+}
+.dif-badge img {
+  width: clamp(40px, 4vw, 56px);
+  height: clamp(40px, 4vw, 56px);
   object-fit: contain;
+  flex-shrink: 0;
+}
+.dif-badge span {
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 700;
+  color: #333;
+  line-height: 1.35;
 }
 
 /* ===== FAQ ===== */
@@ -851,26 +901,29 @@ footer {
 }
 .footer-social {
   display: flex;
-  gap: clamp(8px, 0.9vw, 16px);
+  gap: clamp(10px, 1.1vw, 18px);
   margin-top: 4px;
 }
 .footer-social a {
-  font-size: var(--fs-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(36px, 3.2vw, 48px);
+  height: clamp(36px, 3.2vw, 48px);
+  font-size: clamp(15px, 1.4vw, 20px);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
   text-decoration: none;
-  transition: opacity 0.2s;
   line-height: 1;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 .footer-social a:hover {
-  opacity: 0.75;
-}
-.footer-social .icon-whatsapp {
-  color: #25d366;
-}
-.footer-social .icon-instagram {
-  color: #e1306c;
-}
-.footer-social .icon-linkedin {
-  color: #0077b5;
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
 }
 
 /* Ícones SVG inline */
@@ -978,8 +1031,8 @@ footer {
   .courses-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  .diferenciais-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .dif-badges {
+    grid-template-columns: repeat(2, 1fr);
   }
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1181,7 +1234,7 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  /* ── Diferenciais: 3 colunas + destaque ── */
+  /* ── Diferenciais: números empilhados + selos em coluna única ── */
   .diferenciais-section .section-title {
     max-width: 265px;
     margin-left: auto;
@@ -1191,46 +1244,22 @@ footer {
   .diferenciais-section .section-title span {
     text-align: right;
   }
-  .diferenciais-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .dif-stats {
+    grid-template-columns: 1fr;
   }
-  .dif-card {
-    padding: 10px 8px;
-    gap: 6px;
+  .dif-stat {
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 18px 12px;
   }
-  .dif-card img {
-    width: 36px;
-    height: 36px;
+  .dif-stat:last-child {
+    border-bottom: none;
   }
-  .dif-label {
-    font-size: 13px;
+  .dif-and-also {
+    text-align: center;
   }
-  .dif-sub {
-    font-size: 10px;
-  }
-  .dif-card--featured {
-    order: 999;
-    grid-column: 1 / -1;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-  }
-  .dif-trophy {
-    width: 48px;
-    height: 48px;
-  }
-  .dif-trophy {
-    font-size: 64px;
-  }
-  .dif-card--featured .dif-label {
-    font-size: 30px;
-    text-align: left;
-  }
-  .dif-card--featured .dif-sub {
-    font-size: 16px;
-    text-align: left;
+  .dif-badges {
+    grid-template-columns: 1fr;
   }
 
   /* ── FAQ: coluna única ── */
@@ -1365,10 +1394,6 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .diferenciais-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .faq-section {
     padding: 32px 16px;
   }
@@ -1463,40 +1488,6 @@ footer {
     margin-bottom: clamp(48px, 5vw, 96px);
   }
 
-  /* Diferenciais — troféu oculto no desktop, estrelas visíveis */
-  .dif-trophy {
-    display: none;
-  }
-  .dif-stars {
-    display: block;
-  }
-
-  /* Diferenciais — conteúdo centralizado nos cards */
-  .dif-card {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Diferenciais — card destaque igual aos demais no desktop */
-  .dif-card--featured {
-    background: #f4f4f4;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: clamp(6px, 0.9vw, 16px);
-    padding: clamp(18px, 2.2vw, 40px) clamp(12px, 1.4vw, 26px)
-      clamp(16px, 1.8vw, 32px);
-    order: unset;
-    grid-column: unset;
-  }
-  .dif-card--featured .dif-label {
-    text-align: center;
-  }
-  .dif-card--featured .dif-sub {
-    text-align: center;
-  }
-
   /* About — tamanhos maiores no desktop (rem global é para mobile) */
   .about-title .black {
     font-size: var(--fs-lg);
@@ -1524,16 +1515,6 @@ footer {
     margin-left: 15px;
   }
 
-  /* Rodapé — ícones sociais todos brancos e mesmo tamanho */
-  .footer-social a {
-    font-size: var(--fs-lg);
-    color: #fff;
-  }
-  .footer-social .icon-whatsapp,
-  .footer-social .icon-instagram,
-  .footer-social .icon-linkedin {
-    color: #fff;
-  }
 }
 
 /* ===== HERO SLIDER ===== */
@@ -1643,6 +1624,9 @@ footer {
 }
 .hero-slide--dive {
   background: #a2d6dc;
+}
+.hero-slide--kids {
+  background: #f2a58c;
 }
 /* Brilho/halo atrás da figura — dá contraste e profundidade */
 .hero-slide--figure::before {

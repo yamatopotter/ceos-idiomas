@@ -220,6 +220,11 @@ const cursosData = {
     img: 'assets/img/diferenciais/7-dive-in.webp',
     desc: 'Viva o inglês. Respire o inglês. Pense em inglês. O CÉOS Dive In é a nossa experiência de imersão, criada para quem quer destravar a comunicação de verdade e acelerar o aprendizado de forma prática, intensa e memorável. Não é um curso comum: é um ambiente em que o inglês é a única língua utilizada e cada situação é pensada para estimular a comunicação real — como fazer um intercâmbio sem sair do Brasil. Você ganha confiança ao falar, perde o medo de errar, amplia o vocabulário prático e começa a pensar diretamente em inglês. Oferecemos três formatos: Dive In In Company (imersão dentro da própria empresa, intensiva e direcionada à realidade do negócio), Dive In Long Term (imersão de 15 dias em hotel, com rotina totalmente em inglês, ideal para uma virada de chave) e Dive In Short Term (imersão de um fim de semana em hotel, perfeita como porta de entrada para destravar a fala). Valores à consultar.',
   },
+  floatingclass: {
+    titulo: 'CÉOS Floating Class',
+    img: 'assets/img/diferenciais/9-floating-class.webp',
+    desc: 'Pensando nos profissionais que têm a agenda flexível e imprevisível demais, nas pessoas que trabalham em turno ou viajam constantemente a trabalho, criamos uma modalidade exclusiva no Céos Escola de Idiomas, o "Floating Class". É um modelo exclusivo onde o aluno pode assistir às aulas de acordo com a sua própria disponibilidade de horários, sem a necessidade de se comprometer com um dia e horário fixo por semana. O aluno tem acesso a uma grade de horários predefinida pela escola e pode "flutuar" entre esses horários conforme sua conveniência, encaixando a aula em sua rotina da semana. Benefícios da Floating Class: flexibilidade total de agenda; maior aproveitamento do curso, já que o aluno não precisa faltar se surgir um imprevisto; custo mais acessível comparado a aulas particulares; e interação com diferentes colegas, promovendo uma experiência mais dinâmica e social.',
+  },
 };
 
 const courseModal = document.getElementById('courseModal');
@@ -241,13 +246,13 @@ function openCourseModal(slug) {
     courseModalCta.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
   courseModal.hidden = false;
-  document.body.style.overflow = 'hidden';
+  document.documentElement.classList.add('modal-open');
 }
 
 function closeCourseModal() {
   if (!courseModal) return;
   courseModal.hidden = true;
-  document.body.style.overflow = '';
+  document.documentElement.classList.remove('modal-open');
 }
 
 document.querySelectorAll('[data-curso]').forEach(btn => {
