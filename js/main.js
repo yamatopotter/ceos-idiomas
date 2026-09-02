@@ -119,12 +119,14 @@ if (coursesSection) {
   reveal(coursesSection.querySelector('.courses-cta'), 0.7);
 }
 
-// Nossos Diferenciais — título → subtítulo → cards
+// Nossos Diferenciais — título → subtítulo → números → selos
 const difSection = document.querySelector('.diferenciais-section');
 if (difSection) {
   reveal(difSection.querySelector('.section-title'), 0);
   reveal(difSection.querySelector('.section-subtitle'), 0.1);
-  difSection.querySelectorAll('.dif-card').forEach((el, i) => reveal(el, 0.15 + i * 0.06));
+  difSection.querySelectorAll('.dif-stat').forEach((el, i) => reveal(el, 0.15 + i * 0.08));
+  reveal(difSection.querySelector('.dif-and-also'), 0.4);
+  difSection.querySelectorAll('.dif-badge').forEach((el, i) => reveal(el, 0.45 + i * 0.06));
 }
 
 // FAQ — desktop: coluna a coluna em pares de linha; mobile: DOM order
