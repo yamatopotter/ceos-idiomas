@@ -227,6 +227,11 @@ const cursosData = {
     img: 'assets/img/diferenciais/9-floating-class.webp',
     desc: 'Pensando nos profissionais que têm a agenda flexível e imprevisível demais, nas pessoas que trabalham em turno ou viajam constantemente a trabalho, criamos uma modalidade exclusiva no Céos Escola de Idiomas, o "Floating Class". É um modelo exclusivo onde o aluno pode assistir às aulas de acordo com a sua própria disponibilidade de horários, sem a necessidade de se comprometer com um dia e horário fixo por semana. O aluno tem acesso a uma grade de horários predefinida pela escola e pode "flutuar" entre esses horários conforme sua conveniência, encaixando a aula em sua rotina da semana. Benefícios da Floating Class: flexibilidade total de agenda; maior aproveitamento do curso, já que o aluno não precisa faltar se surgir um imprevisto; custo mais acessível comparado a aulas particulares; e interação com diferentes colegas, promovendo uma experiência mais dinâmica e social.',
   },
+  kids: {
+    titulo: 'CÉOS Kids',
+    img: 'assets/img/diferenciais/kids.webp',
+    desc: 'O CÉOS Kids foi criado para que as crianças aprendam um novo idioma da forma mais natural possível: brincando. Utilizamos os melhores materiais didáticos infantis e uma metodologia lúdica, com músicas, jogos e atividades interativas, para transformar o aprendizado em diversão. As aulas estimulam a curiosidade e a confiança desde cedo, respeitando o ritmo de cada criança e desenvolvendo a fala, a escuta, a leitura e a escrita de maneira leve e prazerosa. É o primeiro passo para uma vida inteira de fluência.',
+  },
 };
 
 const courseModal = document.getElementById('courseModal');

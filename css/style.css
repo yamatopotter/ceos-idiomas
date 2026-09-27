@@ -10,9 +10,22 @@
   --yellow: #ffc300;
   --dark-blue: #1b3a6b;
   --navy: #0d2045;
+  --light-blue: #a9c5df;
   --gray-light: #f5f5f5;
   --text: #333333;
   --white: #ffffff;
+
+  /* Cores dos 4 programas especiais (hero + cards) — todas derivadas da
+     própria paleta (azul e amarelo da marca), variando tom/saturação em
+     vez de introduzir matizes novos (roxo/terracota/teal usados antes). */
+  --biz-1: var(--dark-blue);
+  --biz-2: var(--navy);
+  --float-1: #50729b;
+  --float-2: #203046;
+  --kids-1: #d5911a;
+  --kids-2: #5d3614;
+  --dive-1: #297bae;
+  --dive-2: #0e2949;
 
   /* Fluid spacing — referência: 1440px */
   --section-pad-v: clamp(40px, 5.5vw, 120px);
@@ -352,7 +365,7 @@ body {
 /* ===== PROGRAMAS ESPECIAIS (Business / Dive In / Floating Class) ===== */
 .special-programs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap-cards);
   margin-top: clamp(28px, 3.5vw, 56px);
 }
@@ -390,10 +403,13 @@ body {
   background: linear-gradient(140deg, var(--dark-blue), var(--navy));
 }
 .special-card--divein {
-  background: linear-gradient(140deg, #0e7c8b, #07344a);
+  background: linear-gradient(140deg, var(--dive-1), var(--dive-2));
 }
 .special-card--floatingclass {
-  background: linear-gradient(140deg, #5a4bab, #2a2258);
+  background: linear-gradient(140deg, var(--float-1), var(--float-2));
+}
+.special-card--kids {
+  background: linear-gradient(140deg, var(--kids-1), var(--kids-2));
 }
 .special-card:hover {
   transform: translateY(-6px);
@@ -429,6 +445,10 @@ body {
 }
 .special-title span {
   color: var(--yellow);
+}
+/* Kids tem fundo dourado — amarelo em cima ficaria com baixo contraste */
+.special-card--kids .special-title span {
+  color: var(--navy);
 }
 .special-text {
   position: relative;
@@ -1034,6 +1054,9 @@ footer {
   .dif-badges {
     grid-template-columns: repeat(2, 1fr);
   }
+  .special-programs {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1622,19 +1645,50 @@ footer {
   color: var(--text);
   max-width: 46%;
 }
-.hero-slide--figure .hero-eyebrow {
+/* Intro (estátua) — único slide "figura" com fundo claro, texto escuro */
+.hero-slide--intro .hero-eyebrow {
   color: var(--dark-blue);
 }
-/* Uma cor por slide */
-.hero-slide--business {
-  background: #f4c95d;
-  --mark: #ffffff; /* marca-texto branco: o amarelo sumiria no dourado */
-}
+/* Os 4 pacotes usam o MESMO gradiente escuro dos cards em Programas
+   Especiais (não uma versão clara/pastel) — cor idêntica nas duas
+   seções, para identificação imediata do programa. */
+.hero-slide--business,
+.hero-slide--floating,
+.hero-slide--kids,
 .hero-slide--dive {
-  background: #a2d6dc;
+  color: #fff;
+}
+.hero-slide--business .hero-overlay-content,
+.hero-slide--floating .hero-overlay-content,
+.hero-slide--kids .hero-overlay-content,
+.hero-slide--dive .hero-overlay-content {
+  color: #fff;
+}
+.hero-slide--business .hero-title span,
+.hero-slide--floating .hero-title span,
+.hero-slide--dive .hero-title span {
+  color: var(--yellow);
+  background: none;
+  padding: 0;
+}
+/* Kids tem fundo dourado — amarelo em cima ficaria com baixo contraste,
+   então o destaque usa navy (mesma combinação já usada nos botões). */
+.hero-slide--kids .hero-title span {
+  color: var(--navy);
+  background: none;
+  padding: 0;
+}
+.hero-slide--business {
+  background: linear-gradient(140deg, var(--biz-1), var(--biz-2));
+}
+.hero-slide--floating {
+  background: linear-gradient(140deg, var(--float-1), var(--float-2));
 }
 .hero-slide--kids {
-  background: #f2a58c;
+  background: linear-gradient(140deg, var(--kids-1), var(--kids-2));
+}
+.hero-slide--dive {
+  background: linear-gradient(140deg, var(--dive-1), var(--dive-2));
 }
 /* Brilho/halo atrás da figura — dá contraste e profundidade */
 .hero-slide--figure::before {
@@ -1653,14 +1707,6 @@ footer {
   );
   pointer-events: none;
 }
-/* Botão do slide dourado com mais contraste */
-.hero-slide--business .hero-cta {
-  background: var(--navy);
-  color: #fff !important;
-}
-.hero-slide--business .hero-cta:hover {
-  background: var(--dark-blue);
-}
 /* Slide 1 (intro) — título longo: fonte menor e texto mais largo p/ caber */
 .hero-slide--intro .hero-overlay-content {
   max-width: 54%;
@@ -1674,12 +1720,16 @@ footer {
   .hero-slide--figure .hero-overlay-content {
     padding-top: clamp(28px, 5vh, 64px);
   }
-  /* Figura vertical (estátua/empresário) começa abaixo do cabeçalho — sem cortar */
+  /* Figura vertical (estátua/empresário) começa abaixo do cabeçalho — sem cortar.
+     Altura explícita (não "auto") remove a ambiguidade de top+bottom+height:auto,
+     que fazia a figura ficar pequena demais em monitores muito largos (ela era
+     limitada por max-width antes de conseguir esticar pela altura disponível). */
   .hero-figure {
     top: clamp(135px, 10vw, 172px);
-    bottom: 0;
-    height: auto;
-    max-width: 46%;
+    right: clamp(24px, 6vw, 180px);
+    bottom: auto;
+    height: calc(100% - clamp(135px, 10vw, 172px));
+    max-width: 58%;
   }
 }
 /* Figura horizontal (mergulhador) — centralizada à direita */
