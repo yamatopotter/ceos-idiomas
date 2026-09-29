@@ -14,6 +14,11 @@
   --gray-light: #f5f5f5;
   --text: #333333;
   --white: #ffffff;
+  /* Amarelo de marca original, mas com contorno escuro aplicado no texto
+     (ver .text-outline abaixo) para manter legibilidade sobre fundo claro
+     sem escurecer a cor. */
+  --yellow-ink: var(--yellow);
+  --yellow-ink-strong: var(--yellow);
 
   /* Cores dos 4 programas especiais (hero + cards) — todas derivadas da
      própria paleta (azul e amarelo da marca), variando tom/saturação em
@@ -48,6 +53,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Evita que o header fixo cubra o topo da seção ao navegar por âncora
+     (#sobre, #cursos, #faq, #contato). Ajustado nos breakpoints abaixo
+     conforme a altura real do header encolhe no mobile. */
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -73,7 +82,7 @@ body {
   gap: 20px;
   font-size: var(--fs-sm);
   font-weight: 500;
-  color: #fff;
+  color: var(--dark-blue);
 }
 .top-bar-right {
   display: flex;
@@ -81,7 +90,7 @@ body {
   gap: 20px;
 }
 .top-bar a {
-  color: #fff;
+  color: var(--dark-blue);
   text-decoration: none;
 }
 .top-bar .social-icons {
@@ -90,7 +99,7 @@ body {
   font-size: var(--fs-sm);
 }
 .top-bar .btn-secretaria {
-  border: 2px solid #fff;
+  border: 2px solid var(--dark-blue);
   border-radius: 20px;
   padding: 2px 14px;
   font-weight: 700;
@@ -213,9 +222,11 @@ body {
   text-align: left;
 }
 .section-title span {
-  color: var(--yellow);
+  color: var(--yellow-ink);
   font-weight: 800;
-  text-shadow: 2px 2px 0 #999;
+  -webkit-text-stroke: 1.5px var(--navy);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--navy);
   display: block;
   font-size: 1.4em;
   line-height: 1;
@@ -260,10 +271,12 @@ body {
   margin-top: -32px;
 }
 .about-title .yellow {
-  color: var(--yellow);
+  color: var(--yellow-ink);
   font-weight: 800;
   font-size: 3.5rem;
-  text-shadow: 2px 2px 0 #999;
+  -webkit-text-stroke: 1.5px var(--navy);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--navy);
   display: inline;
   vertical-align: baseline;
 }
@@ -285,6 +298,135 @@ body {
   display: block;
   border-radius: 0;
   max-width: none;
+}
+
+/* ===== DIVERSITY ===== */
+.diversity-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  padding: clamp(48px, 6vw, 110px) clamp(32px, 4.5vw, 100px);
+  background: #fff;
+}
+.diversity-title {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #333;
+  margin-bottom: clamp(20px, 2.2vw, 34px);
+}
+.diversity-title .yellow {
+  color: var(--yellow-ink);
+  -webkit-text-stroke: 1.5px var(--navy);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--navy);
+}
+.diversity-text p {
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  margin-bottom: clamp(12px, 1.4vw, 26px);
+  color: #444;
+}
+.diversity-text p:last-child {
+  margin-bottom: 0;
+}
+.diversity-text strong {
+  color: var(--navy);
+}
+.diversity-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.torn-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 4 / 3;
+  transform: rotate(-3.5deg);
+  filter: drop-shadow(10px 14px 20px rgba(20, 20, 20, 0.28));
+}
+.torn-paper-bg {
+  position: absolute;
+  inset: -7px;
+  background: #fff;
+  clip-path: polygon(
+    0% 0%,
+    12.5% -2.2%,
+    25% 1.8%,
+    37.5% 0.2%,
+    50% -3%,
+    62.5% -3.1%,
+    75% -5.3%,
+    87.5% -0.5%,
+    100% 0%,
+    95.4% 12.5%,
+    100.9% 25%,
+    100.5% 37.5%,
+    105.8% 50%,
+    104.4% 62.5%,
+    95.6% 75%,
+    98.7% 87.5%,
+    100% 100%,
+    87.5% 97.8%,
+    75% 100.9%,
+    62.5% 100.6%,
+    50% 94.6%,
+    37.5% 101.2%,
+    25% 98.7%,
+    12.5% 99.4%,
+    0% 100%,
+    2% 87.5%,
+    -1.7% 75%,
+    0.2% 62.5%,
+    2.8% 50%,
+    5.9% 37.5%,
+    -0.6% 25%,
+    -2.4% 12.5%
+  );
+}
+.torn-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  clip-path: polygon(
+    0% 0%,
+    12.5% -2.2%,
+    25% 1.8%,
+    37.5% 0.2%,
+    50% -3%,
+    62.5% -3.1%,
+    75% -5.3%,
+    87.5% -0.5%,
+    100% 0%,
+    95.4% 12.5%,
+    100.9% 25%,
+    100.5% 37.5%,
+    105.8% 50%,
+    104.4% 62.5%,
+    95.6% 75%,
+    98.7% 87.5%,
+    100% 100%,
+    87.5% 97.8%,
+    75% 100.9%,
+    62.5% 100.6%,
+    50% 94.6%,
+    37.5% 101.2%,
+    25% 98.7%,
+    12.5% 99.4%,
+    0% 100%,
+    2% 87.5%,
+    -1.7% 75%,
+    0.2% 62.5%,
+    2.8% 50%,
+    5.9% 37.5%,
+    -0.6% 25%,
+    -2.4% 12.5%
+  );
 }
 
 /* ===== COURSES ===== */
@@ -700,10 +842,12 @@ html.modal-open body {
 }
 .faq-title {
   text-align: left;
-  color: var(--yellow);
+  color: var(--yellow-ink);
   font-size: clamp(72px, 10vw, 180px);
   font-weight: 800;
-  text-shadow: 2px 2px 0 #999;
+  -webkit-text-stroke: 3px var(--navy);
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 var(--navy);
   margin-bottom: clamp(32px, 4.2vw, 80px);
   letter-spacing: 1px;
 }
@@ -898,10 +1042,13 @@ footer {
   margin-bottom: 4px;
 }
 .footer-heading span {
-  color: var(--yellow);
+  color: var(--yellow-ink-strong);
   font-style: italic;
   font-size: var(--fs-xl);
   font-weight: 900;
+  -webkit-text-stroke: 1.5px var(--navy);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--navy);
   display: block;
   line-height: 1;
 }
@@ -993,7 +1140,9 @@ footer {
   transition: color 0.2s;
 }
 .footer-portals a:hover {
-  color: var(--yellow);
+  color: var(--yellow-ink-strong);
+  -webkit-text-stroke: 1px var(--navy);
+  paint-order: stroke fill;
 }
 
 .footer-bottom {
@@ -1032,14 +1181,17 @@ footer {
   transition: opacity 0.35s ease;
 }
 
-.reveal {
+/* .reveal só começa oculto quando o JS confirma suporte a
+   IntersectionObserver (classe .js-reveal no <html>, ver <head>). Sem JS
+   ou em navegadores sem suporte, o conteúdo permanece visível. */
+.js-reveal .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition:
     opacity 0.55s ease,
     transform 0.55s ease;
 }
-.reveal.in-view {
+.js-reveal .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1064,6 +1216,10 @@ footer {
 
 /* Tablet / mobile landscape */
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+
   /* ── Escala tipográfica reduzida ── */
   :root {
     --fs-sm: clamp(13px, 3.5vw, 18px);
@@ -1223,6 +1379,17 @@ footer {
     padding-top: 0;
     margin-top: -35px;
   }
+  /* ── Diversidade: coluna única, gráfico acima do texto ── */
+  .diversity-section {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+  .diversity-graphic {
+    order: -1;
+  }
+  .torn-frame {
+    max-width: 260px;
+  }
   /* ── Cursos: 3 colunas + botão CTA ── */
   .courses-section .section-title {
     max-width: 170px;
@@ -1314,9 +1481,9 @@ footer {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 2px solid var(--yellow);
-    background: none;
-    color: var(--yellow);
+    border: none;
+    background: var(--navy);
+    color: var(--yellow-ink);
     cursor: pointer;
     transition:
       background 0.2s,
@@ -1392,6 +1559,10 @@ footer {
 
 /* Mobile portrait */
 @media (max-width: 480px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
   /* ── Escala ainda menor ── */
   :root {
     --fs-sm: clamp(12px, 3.8vw, 16px);
@@ -1864,6 +2035,9 @@ footer {
   .hero-progress i {
     animation: none;
     transform: scaleX(0.5);
+  }
+  .js-reveal .reveal {
+    transition: none;
   }
 }
 

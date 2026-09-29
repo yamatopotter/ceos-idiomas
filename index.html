@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffc300" />
     <title>CÉOS - Escola de Idiomas</title>
+    <script>
+      // Só ativa o fade-in por scroll quando há suporte a IntersectionObserver.
+      // Sem isso (JS bloqueado/indisponível), o CSS mantém o conteúdo visível.
+      if ("IntersectionObserver" in window) {
+        document.documentElement.classList.add("js-reveal");
+      }
+    </script>
     <meta
       name="description"
       content="CÉOS Escola de Idiomas — Inglês, Espanhol, Francês e mais de 10 idiomas. Metodologia aprovada, material didático Cambridge e aulas presenciais ou on-line em Itaguaí, RJ."
@@ -74,7 +81,13 @@
               fetchpriority="high"
             />
           </a>
-          <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="navLinks"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
@@ -117,10 +130,10 @@
         <div class="hero-slide hero-slide--figure hero-slide--intro">
           <div class="hero-overlay-content">
             <span class="hero-eyebrow">Bem-vindo</span>
-            <h2 class="hero-title">
+            <h1 class="hero-title">
               Praticidade para aprender,
               <span>confiança</span> para dominar o mundo!
-            </h2>
+            </h1>
             <p class="hero-text">
               CÉOS Escola de Idiomas — a sua trajetória rumo à fluência começa
               aqui.
@@ -276,6 +289,50 @@
           height="1141"
           loading="lazy"
         />
+      </div>
+    </section>
+
+    <!-- DIVERSITY -->
+    <section id="diversidade" class="diversity-section">
+      <div class="diversity-text">
+        <h2 class="diversity-title">
+          Cada estudante aprende de <span class="yellow">um jeito.</span>
+        </h2>
+        <p>
+          No CÉOS, acreditamos que não existe uma única forma de aprender.
+          Por isso, nossa proposta pedagógica valoriza a
+          <strong>educação inclusiva</strong>, a
+          <strong>neurodiversidade</strong> e o respeito às singularidades de
+          cada estudante.
+        </p>
+        <p>
+          Estudantes com TEA, TDAH, TOD, entre outras condições, podem contar
+          com estratégias pedagógicas adaptadas às suas necessidades,
+          incluindo <strong>flexibilização curricular</strong>,
+          diferenciação e individualização do ensino.
+        </p>
+        <p>
+          Assim, buscamos reduzir barreiras à aprendizagem e criar um
+          ambiente que favoreça a
+          <strong
+            >autonomia, a participação, a autorregulação e o desenvolvimento
+            integral</strong
+          >
+          de cada estudante.
+        </p>
+      </div>
+      <div class="diversity-graphic">
+        <div class="torn-frame">
+          <div class="torn-paper-bg"></div>
+          <img
+            class="torn-photo"
+            src="assets/img/diversidade-estudante.webp"
+            alt="Estudante estudando em seu próprio ritmo"
+            width="900"
+            height="507"
+            loading="lazy"
+          />
+        </div>
       </div>
     </section>
 
@@ -645,6 +702,45 @@
             height="40"
           />
           <span>Avaliação contínua</span>
+        </div>
+        <div class="dif-badge">
+          <img
+            src="assets/img/diferenciais/11-studying-lab.webp"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span>CÉOS Studying Lab</span>
+        </div>
+        <div class="dif-badge">
+          <img
+            src="assets/img/diferenciais/12-conversation-club.webp"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span>CÉOS Conversation Club</span>
+        </div>
+        <div class="dif-badge">
+          <img
+            src="assets/img/diferenciais/13-learning-session.webp"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span>CÉOS Learning Session</span>
+        </div>
+        <div class="dif-badge">
+          <img
+            src="assets/img/diferenciais/14-parceria-empresas.webp"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span
+            >Parceria com empresas nacionais e multinacionais, com benefícios
+            exclusivos</span
+          >
         </div>
       </div>
     </section>

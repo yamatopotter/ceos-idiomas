@@ -3,9 +3,15 @@ const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 const navClose = document.getElementById('navClose');
 
-const closeMenu = () => navLinks?.classList.remove('open');
+const closeMenu = () => {
+  navLinks?.classList.remove('open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+};
 
-navToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
+navToggle?.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
 navClose?.addEventListener('click', closeMenu);
 
 navLinks?.querySelectorAll('a').forEach(link => {
@@ -108,6 +114,14 @@ if (aboutSection) {
   reveal(aboutSection.querySelector('.about-title'), 0);
   aboutSection.querySelectorAll('.about-text p').forEach((el, i) => reveal(el, 0.1 + i * 0.1));
   reveal(aboutSection.querySelector('.about-image'), 0.2);
+}
+
+// Diversidade — título, parágrafos e gráfico em ordem
+const diversitySection = document.querySelector('.diversity-section');
+if (diversitySection) {
+  reveal(diversitySection.querySelector('.diversity-title'), 0);
+  diversitySection.querySelectorAll('.diversity-text p').forEach((el, i) => reveal(el, 0.1 + i * 0.1));
+  reveal(diversitySection.querySelector('.diversity-graphic'), 0.2);
 }
 
 // Nossos Cursos — título → subtítulo → cards → CTA
